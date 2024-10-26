@@ -11,9 +11,7 @@
           - unzip
           - cockpit 
           - cockpit-bridge 
-          - cockpit-file-sharing 
           - cockpit-machines 
-          - cockpit-navigator 
           - cockpit-networkmanager 
           - cockpit-ostree 
           - cockpit-packagekit 
