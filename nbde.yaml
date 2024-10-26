@@ -14,7 +14,7 @@
   vars:
     nbde_client_bindings:
       - device: /dev/vda3
-        encryption_password: {{ clevis-pw }}
+        encryption_password: "{{ survey.clevis-pw }}"
         servers:
           - http://fedora.home.io
   roles:
