@@ -14,7 +14,7 @@
   vars:
     nbde_client_bindings:
       - device: /dev/vda3
-        encryption_password: <LUKS PASSWORD>
+        encryption_password: redhat1
         servers:
           - http://fedora.home.io
   roles:
