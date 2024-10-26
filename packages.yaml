@@ -9,7 +9,6 @@
           - clevis-luks
           - clevis-dracut
           - unzip
-          - ansible
           - cockpit 
           - cockpit-bridge 
           - cockpit-file-sharing 
