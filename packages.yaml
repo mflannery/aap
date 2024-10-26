@@ -1,0 +1,27 @@
+---
+- name: Install packages that apply to both server and workstation
+  hosts: all
+  become: true
+  tasks:
+    - name: Install clevis packages
+      ansible.builtin.dnf:
+        name:
+          - clevis-luks
+          - clevis-dracut
+          - unzip
+          - ansible
+          - cockpit 
+          - cockpit-bridge 
+          - cockpit-file-sharing 
+          - cockpit-machines 
+          - cockpit-navigator 
+          - cockpit-networkmanager 
+          - cockpit-ostree 
+          - cockpit-packagekit 
+          - cockpit-pcp 
+          - cockpit-selinux 
+          - cockpit-podman 
+          - cockpit-storaged 
+          - cockpit-system 
+          - cockpit-ws
+        state: latest
