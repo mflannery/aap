@@ -1,0 +1,21 @@
+---
+- name: Set up automatic unlock
+  hosts: all
+  become: true
+  no_log: false
+#  tasks:
+#    - name: Install clevis packages
+#      ansible.builtin.dnf:
+#        name:
+#          - clevis-luks
+#          - clevis-dracut
+#        state: latest
+
+  vars:
+    nbde_client_bindings:
+      - device: /dev/vda3
+        encryption_password: <LUKS PASSWORD>
+        servers:
+          - http://fedora.home.io
+  roles:
+    - fedora.linux_system_roles.nbde_client
