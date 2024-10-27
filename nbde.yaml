@@ -18,4 +18,4 @@
         servers:
           - http://fedora.home.io
   roles:
-    - rhel-system-roles.nbde_client
+    - role: rhel-system-roles.nbde_client
