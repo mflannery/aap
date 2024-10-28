@@ -1,0 +1,18 @@
+---
+- name: Update OS and reboot if packages were updated
+  hosts: all
+  become: true
+  tasks:
+    - name: Update system
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+        update_cache: yes
+        update_only: yes
+      register: dnf_update_status
+    - name: Remove packages not needed anymore
+      ansible.builtin.dnf:
+        autoremove: yes
+    - name: Reboot if packages were updated
+      reboot:
+      when: dnf_update_status.changed
