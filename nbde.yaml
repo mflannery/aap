@@ -2,7 +2,7 @@
 - name: Set up automatic unlock
   hosts: all
   become: true
-  no_log: false
+#  no_log: false
 #  tasks:
 #    - name: Install clevis packages
 #      ansible.builtin.dnf:
