@@ -1,6 +1,6 @@
 ---
 - name: Configure clients for unlocking of encrypted volumes by Tang servers
-  hosts: managed-node-01.example.com
+  hosts: all
   tasks:
     - name: Create NBDE client bindings
       ansible.builtin.include_role:
@@ -16,5 +16,4 @@
           - device: /dev/rhel/swap
             encryption_key_src: /etc/luks/keyfile
             servers:
-              - http://fedora.home.io
               - http://fedora.home.io
