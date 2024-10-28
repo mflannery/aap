@@ -1,6 +1,7 @@
 ---
 - name: Configure clients for unlocking of encrypted volumes by Tang servers
   hosts: all
+  become: true
   tasks:
     - name: Create NBDE client bindings
       ansible.builtin.include_role:
