@@ -1,0 +1,9 @@
+- name: Enable and Start Cockpit
+  hosts: all
+  become: true
+  tasks:
+    - name: Start and enable cockpit
+      ansible.builtin.systemd_service:
+        name: cockpit
+        state: started
+        enabled: true
