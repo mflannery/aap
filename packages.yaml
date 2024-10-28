@@ -21,4 +21,5 @@
           - cockpit-storaged 
           - cockpit-system 
           - cockpit-ws
+          - "{{ package_var | default(omit) }}"
         state: latest
