@@ -13,8 +13,8 @@
 
   vars:
     nbde_client_bindings:
-      - device: /dev/mapper/rhel-home
-        encryption_password: "redhat1"
+      - device: /dev/vda2
+        encryption_password: redhat1
         servers:
           - http://fedora.home.io
   roles:
