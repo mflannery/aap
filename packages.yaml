@@ -9,17 +9,17 @@
           - clevis-luks
           - clevis-dracut
           - unzip
-          - cockpit 
-          - cockpit-bridge 
-          - cockpit-machines 
-          - cockpit-networkmanager 
-          - cockpit-ostree 
-          - cockpit-packagekit 
-          - cockpit-pcp 
-          - cockpit-selinux 
-          - cockpit-podman 
-          - cockpit-storaged 
-          - cockpit-system 
+          - cockpit
+          - cockpit-bridge
+          - cockpit-machines
+          - cockpit-networkmanager
+          - cockpit-ostree
+          - cockpit-packagekit
+          - cockpit-pcp
+          - cockpit-selinux
+          - cockpit-podman
+          - cockpit-storaged
+          - cockpit-system
           - cockpit-ws
           - "{{ package_var | default(omit) }}"
         state: latest

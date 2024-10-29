@@ -4,9 +4,9 @@
   become: true
   vars:
     nbde_client_bindings:
-      - device: /dev/vda2
-        encryption_password: redhat1
+      - device: "{{ device_var }}"
+        encryption_password: "{{ encryption_pw_var }}"
         servers:
-          - http://fedora.home.io
+          - "{{ tang_server_var | default('http://fedora.home.io') }}"
   roles:
     - redhat.rhel_system_roles.nbde_client
