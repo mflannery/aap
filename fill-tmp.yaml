@@ -5,7 +5,7 @@
 
   tasks:
   - name: Create a file of 1G filled with null bytes
-    ansible.builtin.filesize:
+    community.general.filesize:
       path: /tmp/large.file
       size: 4G
       source: /dev/zero
