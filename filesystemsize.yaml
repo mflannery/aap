@@ -24,3 +24,9 @@
         msg: >
           Root filesystem usage is ({{ root_fs_usage }}%) utilized
       when: root_fs_usage > "80"
+
+    - name: remove /tmp/*.file
+      ansible.builtin.file:
+        path: /tmp/*.file
+        state: absent
+      when: root_fs_usage > "80"
