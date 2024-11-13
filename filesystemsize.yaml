@@ -30,18 +30,18 @@
 #      register: files_to_delete
 
     - name: Analyzing the directories to delete...
-      find:
+      ansible.builtin.find:
         paths: /tmp
         patterns: "*.file"
         use_regex: true
       register: files_to_delete
 
     - name: Displaying the result...
-      debug:
+      ansible.builtin.debug:
         var: files_to_delete
 
     - name: Deleting the files...
-      file:
+      ansible.builtin.file:
         path: "{{ item.path }}"
         state: absent
       with_items: "{{ files_to_delete.files }}"
