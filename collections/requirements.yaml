@@ -3,3 +3,4 @@ collections:
   - name: redhat.rhel_system_roles
     version: ">=1.88.9"
   - name: community.general
+  - name: ansible.eda
