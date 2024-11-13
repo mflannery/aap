@@ -15,26 +15,28 @@
       ansible.builtin.set_fact:
         root_fs_usage: "{{ filesystem_usage.stdout | int }}"
 
-    - name: Categorize filesystem usage
-      ansible.builtin.debug:
-        msg: >
-          Root filesystem usage is ({{ root_fs_usage }}%) utilized
-      when: root_fs_usage > "80"
+    when: root_fs_usage > "80"
+    block:
+      - name: Categorize filesystem usage
+        ansible.builtin.debug:
+          msg: >
+            Root filesystem usage is ({{ root_fs_usage }}%) utilized
+#       when: root_fs_usage > "80"
 
-    - name: Analyzing the directories to delete...
-      ansible.builtin.find:
-        paths: /tmp
-        patterns: "*.file"
-        age: 1000
-        age_stamp: atime
-      register: files_to_delete
+      - name: Analyzing the directories to delete...
+        ansible.builtin.find:
+          paths: /tmp
+          patterns: "*.file"
+          age: 5
+          age_stamp: atime
+        register: files_to_delete
 
-    - name: Displaying the result...
-      ansible.builtin.debug:
-        var: files_to_delete
+      - name: Displaying the result...
+        ansible.builtin.debug:
+          var: files_to_delete
 
-    - name: Deleting the files...
-      ansible.builtin.file:
-        path: "{{ item.path }}"
-        state: absent
-      with_items: "{{ files_to_delete.files }}"
+      - name: Deleting the files...
+        ansible.builtin.file:
+          path: "{{ item.path }}"
+          state: absent
+        with_items: "{{ files_to_delete.files }}"
