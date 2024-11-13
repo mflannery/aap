@@ -33,7 +33,8 @@
       ansible.builtin.find:
         paths: /tmp
         patterns: "*.file"
-#        use_regex: true
+        age: 10
+        age_stamp: atime
       register: files_to_delete
 
     - name: Displaying the result...
