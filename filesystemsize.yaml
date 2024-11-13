@@ -22,7 +22,6 @@
          ansible.builtin.debug:
            msg: >
              Root filesystem usage is ({{ root_fs_usage }}%) utilized
-#        when: root_fs_usage > "80"
 
        - name: Analyzing the directories to delete...
          ansible.builtin.find:
@@ -34,7 +33,7 @@
 
        - name: Displaying the result...
          ansible.builtin.debug:
-           var: files_to_delete
+           var: files_to_delete.files
 
        - name: Deleting the files...
          ansible.builtin.file:
