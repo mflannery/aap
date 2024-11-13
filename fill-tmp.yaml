@@ -7,5 +7,5 @@
   - name: Create a file of 1G filled with null bytes
     community.general.filesize:
       path: /tmp/large.file
-      size: 4G
+      size: 5G
       source: /dev/zero
