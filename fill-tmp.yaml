@@ -1,0 +1,11 @@
+---
+- name: Fill up a filesystem
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Create a file of 1G filled with null bytes
+    community.general.filesize:
+      path: /tmp/large.file
+      size: 6.5G
+      source: /dev/zero
