@@ -4,7 +4,7 @@
   become: true
 
   tasks:
-  - name: Create a file of 1G filled with null bytes
+  - name: Create a file of 5G filled with zeros
     community.general.filesize:
       path: /tmp/large.file
       size: 5G
