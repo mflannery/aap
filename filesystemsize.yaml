@@ -29,4 +29,5 @@
       ansible.builtin.file:
         path: /tmp/*.file
         state: absent
+      with_fileglob: "/tmp/*.file"
       when: root_fs_usage > "80"
