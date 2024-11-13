@@ -7,12 +7,12 @@
       ansible.builtin.dnf:
         name: '*'
         state: latest
-        update_cache: yes
-        update_only: yes
+        update_cache: true
+        update_only: true
       register: dnf_update_status
     - name: Remove packages not needed anymore
       ansible.builtin.dnf:
-        autoremove: yes
+        autoremove: true
     - name: Reboot if packages were updated
       reboot:
       when: dnf_update_status.changed
