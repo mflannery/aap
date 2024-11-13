@@ -1,0 +1,27 @@
+---
+- name: Check root filesystem usage
+  hosts: all
+  become: yes
+  vars:
+    filesystem: "/"
+
+  tasks:
+    - name: Get filesystem usage
+      ansible.builtin.shell: df -h {{ filesystem }} | awk 'NR==2 {print $5}' | sed 's/%//'
+      register: filesystem_usage
+      changed_when: false
+
+    - name: Display filesystem usage
+      ansible.builtin.debug:
+        msg: "Root filesystem ({{ filesystem }}) is {{ filesystem_usage.stdout }}% full"
+
+    - name: Set fact for filesystem usage
+      ansible.builtin.set_fact:
+        root_fs_usage: "{{ filesystem_usage.stdout | int }}"
+
+    - name: Categorize filesystem usage
+      ansible.builtin.debug:
+        msg: >
+          Root filesystem usage is 
+          {{ 'low' if root_fs_usage < 70 else 'moderate' if root_fs_usage < 85 else 'high' }}
+          ({{ root_fs_usage }}%)
