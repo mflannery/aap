@@ -21,19 +21,11 @@
           Root filesystem usage is ({{ root_fs_usage }}%) utilized
       when: root_fs_usage > "80"
 
-#    - name: Recursively find /var/tmp files with last access time greater than 3600 seconds
-#      ansible.builtin.find:
-#        paths: /tmp
-#        age: 5
-#        age_stamp: atime
-#        recurse: yes
-#      register: files_to_delete
-
     - name: Analyzing the directories to delete...
       ansible.builtin.find:
         paths: /tmp
         patterns: "*.file"
-        age: 10
+        age: 1000
         age_stamp: atime
       register: files_to_delete
 
