@@ -1,0 +1,49 @@
+---
+- name: Check root filesystem usage
+  hosts: all
+  become: true
+  vars:
+    filesystem: "/"
+
+  tasks:
+    - name: get filesystem usage from ansible facts
+      setup:
+    - name: Print facts
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts }}"
+
+        
+#    - name: Get filesystem usage
+#      ansible.builtin.shell: df -h {{ filesystem }} | awk 'NR==2 {print $5}' | sed 's/%//'
+#      register: filesystem_usage
+#      changed_when: false
+#
+#    - name: Set fact for filesystem usage
+#      ansible.builtin.set_fact:
+#        root_fs_usage: "{{ filesystem_usage.stdout | int }}"
+#
+#    - name: delete files is root filesystem is more than 80% full
+#      when: root_fs_usage > "80"
+#      block:
+#       - name: Categorize filesystem usage
+#         ansible.builtin.debug:
+#           msg: >
+#             Root filesystem usage is ({{ root_fs_usage }}%) utilized
+#
+#       - name: Analyzing the directories to delete...
+#         ansible.builtin.find:
+#           paths: /tmp
+#           patterns: "*.file"
+#           age: 5
+#           age_stamp: atime
+#         register: files_to_delete
+#
+#       - name: Displaying the result...
+#         ansible.builtin.debug:
+#           var: files_to_delete.files
+#
+#       - name: Deleting the files...
+#         ansible.builtin.file:
+#           path: "{{ item.path }}"
+#           state: absent
+#         with_items: "{{ files_to_delete.files }}"
