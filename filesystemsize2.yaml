@@ -4,7 +4,7 @@
   become: true
   vars:
     filesystem: "/"
-     mount_all: []
+    mount_all: []
 
   tasks:
 #    - name: get filesystem usage from ansible facts
