@@ -7,12 +7,12 @@
 
   tasks:
     - name: get filesystem usage from ansible facts
-      setup:
-    - name: Print facts
+#      setup:
+#    - name: Print facts
       ansible.builtin.debug:
-        msg: "{{ ansible_facts }}"
+        var: ansible_facts
 
-        
+
 #    - name: Get filesystem usage
 #      ansible.builtin.shell: df -h {{ filesystem }} | awk 'NR==2 {print $5}' | sed 's/%//'
 #      register: filesystem_usage
