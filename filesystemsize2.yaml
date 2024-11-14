@@ -10,7 +10,7 @@
 #      setup:
 #    - name: Print facts
       ansible.builtin.debug:
-        var: ansible_facts['mounts']
+        var: ansible_facts['mounts']['mount']
 
 
 #    - name: Get filesystem usage
