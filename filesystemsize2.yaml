@@ -10,7 +10,7 @@
 #      ansible.builtin.debug:
 #        var: ansible_facts['mounts']
     - set_fact:
-        mount: "{{ ansible_mounts | second }}"
+        mount: "{{ ansible_mounts | first }}"
                                                                                                                         
     - set_fact: disk_usage="{{ mount.size_total - mount.size_available }}"
     - set_fact: disk_usage_ratio="{{ disk_usage|float / mount.size_total }}"
