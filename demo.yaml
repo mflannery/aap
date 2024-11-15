@@ -1,5 +1,7 @@
-- hosts: localhost
-  connection: local
+---
+- name: demo playbook for EDA
+  hosts: all
   tasks:
-    - debug:
+    -name: print message
+      ansible.builtin.debug:
         msg: "Thank you for the answer."
