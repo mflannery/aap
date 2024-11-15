@@ -12,5 +12,5 @@
       condition: event.payload.message == "42"
       action:
         run_job_template:
-          name: EDA-Demo
+          name: deletefiles
           organization: Default
