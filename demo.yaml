@@ -2,6 +2,6 @@
 - name: demo playbook for EDA
   hosts: all
   tasks:
-    -name: print message
+    - name: print message
       ansible.builtin.debug:
         msg: "Thank you for the answer."
