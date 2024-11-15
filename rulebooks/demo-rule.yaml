@@ -11,5 +11,5 @@
     - name: Say thank you
       condition: event.payload.message == "42"
       action:
-        run_playbook:
-          name: demo.yml
+        run_job_template:
+          name: demo.yaml
