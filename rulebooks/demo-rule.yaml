@@ -9,7 +9,7 @@
 
   rules:
     - name: Delete files from /tmp if >= 80% utilized
-      condition: event.payload.message >= "80"
+      condition: event.payload.usage >= "80"
       action:
         run_job_template:
           name: deletefiles
