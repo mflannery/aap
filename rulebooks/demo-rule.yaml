@@ -9,7 +9,7 @@
 
   rules:
     - name: Say thank you
-      condition: event.payload.message == "42"
+      condition: event.payload.message >= "80"
       action:
         run_job_template:
           name: deletefiles
