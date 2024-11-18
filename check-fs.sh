@@ -14,6 +14,7 @@ JSON_STRING=$(jq -n --arg usage "$USAGE" '$ARGS.named')
 if [ "$USAGE" -gt 80 ]; then
     # Use logger to write to system logs
     logger -p user.warning "High filesystem usage: $USAGE% of root filesystem is full"
-    # Make API call to EDA sending the JSON object 
-    curl -X POST -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
+    # Make API call to EDA sending the JSON object - first example without token, second with token
+#    curl -X POST -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
+    curl -X POST -H "Authorization:Bearer redhat" -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
 fi
