@@ -3,4 +3,5 @@
   hosts: all
   tasks:
     - name: Reboot AT&T RG
+      ansible.builtin.shell: logger "Rebooting AT&T Gateway"
       ansible.builtin.shell: /home/mike/reboot-rg
