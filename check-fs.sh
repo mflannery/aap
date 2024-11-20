@@ -16,5 +16,6 @@ if [ "$USAGE" -gt 80 ]; then
     logger -p user.warning "High filesystem usage: $USAGE% of root filesystem is full"
     # Make API call to EDA sending the JSON object - first example without token, second with token
 #    curl -X POST -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
-    curl -X POST -H "Authorization:Bearer redhat" -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
+#    curl -X POST -H "Authorization:Bearer redhat" -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
+    curl -X POST -H "Authorization:Bearer VMbe5JIf9#!Z%t" -H "Content-Type: application/json" -d "$JSON_STRING" --insecure https://aap25.home.io/eda-event-streams/api/eda/v1/external_event_stream/bf80009d-d4cc-4d59-bfa8-0beca9cbdd1a/post/
 fi
