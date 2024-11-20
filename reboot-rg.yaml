@@ -1,0 +1,14 @@
+---
+- name: Reboot the AT&T Residential gateway by turning off and back on the outlet its plugged into
+  hosts: all
+  tasks:
+    - name: Reboot AT&T RG
+      ansible.builtin.expect:
+        command: /usr/bin/telnet
+        responses:
+            "Password:":
+                - "password" #Do I need to include the \r return command?
+#            "IPS>":
+#                - "/Off 6" #Do I need to include the \r return command?
+#            "(Y/N):":
+#                - "Y" #Do I need to include the \r return command?
