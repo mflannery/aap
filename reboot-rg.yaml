@@ -7,10 +7,10 @@
         command: /usr/bin/telnet pdu2.home.io
         responses:
             "Password:":
-                - "password" #Do I need to include the \r return command?
+                - "password/r" #Do I need to include the \r return command?
             "IPS>":
-                - "/S" #Do I need to include the \r return command?
+                - "/S/r" #Do I need to include the \r return command?
             "IPS>":
-                - "/X" #Do I need to include the \r return command?
+                - "/X/r" #Do I need to include the \r return command?
             "Sure? (Y/N):":
-                - "Y" #Do I need to include the \r return command?
+                - "Y/r" #Do I need to include the \r return command?
