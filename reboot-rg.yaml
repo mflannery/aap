@@ -4,11 +4,13 @@
   tasks:
     - name: Reboot AT&T RG
       ansible.builtin.expect:
-        command: /usr/bin/telnet
+        command: /usr/bin/telnet pdu2.home.io
         responses:
             "Password:":
                 - "password" #Do I need to include the \r return command?
-#            "IPS>":
-#                - "/Off 6" #Do I need to include the \r return command?
-#            "(Y/N):":
-#                - "Y" #Do I need to include the \r return command?
+            "IPS>":
+                - "/S" #Do I need to include the \r return command?
+            "IPS>":
+                - "/X" #Do I need to include the \r return command?
+            "Sure? (Y/N):":
+                - "Y" #Do I need to include the \r return command?
