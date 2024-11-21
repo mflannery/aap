@@ -12,8 +12,8 @@
         ise_password: "{{  CISCO_ISE_PASSWORD }}"
         ise_verify: "{{ ise_verify }}"
         name: "{{  endpoint_name  }}"
-      register: 
-         - id_mac
+#      register: 
+#         - id_mac
       failed_when:
         - "'FAILED' in id_mac.stderr"
         - "'404' not in id_mac.stderr"
