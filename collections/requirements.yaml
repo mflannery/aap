@@ -4,3 +4,4 @@ collections:
     version: ">=1.88.9"
   - name: community.general
   - name: ansible.eda
+  - name: cisco.ise
