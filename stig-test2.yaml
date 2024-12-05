@@ -1,6 +1,5 @@
 ---
 - name: Fail if any repo has gpgcheck=0
-#  connection: local
   hosts: all
   become: true
   tasks:
@@ -11,15 +10,15 @@
       ansible.builtin.slurp:
         src: "{{ item }}"
 
+    - name: debug some info
+      ansible.builtin.debug: 
+        msg: yum.repos.results
+
     - name: Use set_fact to combine yum_repos into single dictionary
       ansible.builtin.set_fact:
         yum_repos_combined: "{{ yum_repos_combined | default({}) | combine({item.source:
           item.content|b64decode|community.general.from_ini } ) }}"
       loop: "{{ yum_repos.results }}"
-
-    - name: debug some info
-      ansible.builtin.debug: 
-        msg: yum.repos.results
 
     - name: Assert gpgcheck is enabled
       loop: "{{ yum_repos_combined |dict2items }}"
