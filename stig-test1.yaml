@@ -2,6 +2,7 @@
 - name: STIG Playbook Test
   hosts: all
   gather_facts: false
+  become: true
 
   tasks:
     - name: RHEL 8 STIG Rule 230264 - Find Repo Files 
