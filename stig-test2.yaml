@@ -25,3 +25,7 @@
       loop: "{{ yum_repos_combined |dict2items }}"
       ansible.builtin.assert:
         that: "{{ item.value[item.value|first]['gpgcheck'] | bool }}"
+
+    - name: debug at end
+      ansible.builtin.debug:
+        msg: "{{ yum_repos_combined }}"
