@@ -18,8 +18,11 @@
         block: |
           gpgcheck=1
         insertafter: '^\[.*\]'
+        create: false
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR GPGCHECK"
       loop: "{{ yum_repos.files }}"
+      loop_control:
+        label: "{{ item.path }}"
       check_mode: false
     - name: STIG Rule 230264 - Ensure gpgcheck=1 for existing entries
       ansible.builtin.replace:
