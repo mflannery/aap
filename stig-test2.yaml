@@ -1,5 +1,6 @@
 ---
 - name: Fail if any repo has gpgcheck=0
+  connection: local
   hosts: all
   become: true
   tasks:
