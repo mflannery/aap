@@ -17,6 +17,10 @@
           item.content|b64decode|community.general.from_ini } ) }}"
       loop: "{{ yum_repos.results }}"
 
+    - name: debug some info
+      ansible.builtin.debug: 
+        msg: yum.repos.results
+
     - name: Assert gpgcheck is enabled
       loop: "{{ yum_repos_combined |dict2items }}"
       ansible.builtin.assert:
