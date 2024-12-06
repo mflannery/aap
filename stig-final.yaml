@@ -1,0 +1,43 @@
+---
+- name: STIG Playbook Test
+  hosts: all
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: RHEL 8 STIG Rule 230264 - Find Repo Files
+      ansible.builtin.find:
+        paths: /etc/yum.repos.d
+        recurse: true
+        patterns: "*.repo"
+      register: yum_repos
+    - name: RHEL 8 STIG Rule 230264 - Slurp Repo File Contents
+      ansible.builtin.slurp:
+        src: "{{ item.path }}"
+      loop: "{{ yum_repos.files }}"
+      register: repo_contents
+    - name: RHEL 8 STIG Rule 230264 - Parse Repo Sections
+      ansible.builtin.set_fact:
+        parsed_repos: >-
+          {{
+            parsed_repos | default([]) +
+            [{
+              'file': item.source,
+              'repos': (item.content | b64decode | regex_findall('^\[([^\]]+)\]', multiline=True))
+            }]
+          }}
+      loop: "{{ repo_contents.results }}"
+    - name: RHEL 8 STIG Rule 230264 - Set gpgcheck to 1
+      community.general.ini_file:
+        path: "{{ item.0.file }}"
+        section: "{{ item.1 }}"
+        option: gpgcheck
+        value: 1
+        ignore_spaces: true
+        backup: true
+        create: false
+        follow: true
+        state: present
+      loop: "{{ parsed_repos | subelements('repos') }}"
+      loop_control:
+        label: "{{ item.0.file }} - {{ item.1 }}"
