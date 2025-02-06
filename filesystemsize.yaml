@@ -11,13 +11,8 @@
         root_path: "{{( ansible_facts.mounts | selectattr('mount', 'in', path))[-1] }}"
   
     - name: delete files if root filesystem is more than 80% full
-      when: ansible_mounts['/']['size_available'] / ansible_mounts['/']['size_total'] < "20"
+      when: (root_path.size_available/root_path.size_total*100) | int < 20
       block:
-       - name: Categorize filesystem usage
-         ansible.builtin.debug:
-           msg: >
-             Root filesystem usage is ({{ root_fs_usage }}%) utilized
-
        - name: Analyzing the directories to delete...
          ansible.builtin.find:
            paths: /tmp
