@@ -1,0 +1,25 @@
+---
+- name: do mike thing
+  hosts: localhost
+  vars:
+    path: /
+  tasks: 
+    - name: set fact
+      ansible.builtin.set_fact:
+        root_path: "{{( ansible_facts.mounts | selectattr('mount', 'in', path))[-1] }}"
+
+    - name: size_available
+      ansible.builtin.debug:
+        msg: "{{root_path}}"
+
+    - name: size_available
+      ansible.builtin.debug:
+        msg: "root_path.size_available {{ root_path.size_available}}"
+
+    - name: size_total
+      ansible.builtin.debug:
+        msg: "root_path.size_total {{ root_path.size_total}}"
+
+    - name: percentage
+      ansible.builtin.debug:
+        msg: "in decimal {{ root_path.size_available/root_path.size_total}}"
