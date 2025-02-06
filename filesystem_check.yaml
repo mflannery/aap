@@ -1,6 +1,6 @@
 ---
 - name: do mike thing
-  hosts: localhost
+  hosts: all
   vars:
     path: /
   tasks: 
