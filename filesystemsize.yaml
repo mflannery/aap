@@ -6,18 +6,10 @@
     filesystem: "/"
 
   tasks:
-    - name: Get filesystem usage
-      ansible.builtin.shell: df -h {{ filesystem }} | awk 'NR==2 {print $5}' | sed 's/%//'
-      register: filesystem_usage
-      changed_when: false
-
-    - name: output size available
-      ansible.builtin.debug:
-        msg: size_available = 
-    - name: Set fact for filesystem usage
+    - name: set Filesystem usage fact
       ansible.builtin.set_fact:
-        root_fs_usage: "{{ filesystem_usage.stdout | int }}"
-
+        root_path: "{{( ansible_facts.mounts | selectattr('mount', 'in', path))[-1] }}"
+  
     - name: delete files if root filesystem is more than 80% full
       when: ansible_mounts['/']['size_available'] / ansible_mounts['/']['size_total'] < "20"
       block:
