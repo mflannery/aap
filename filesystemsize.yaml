@@ -11,12 +11,15 @@
       register: filesystem_usage
       changed_when: false
 
+    - name: output size available
+      ansible.builtin.debug:
+        msg: size_available = 
     - name: Set fact for filesystem usage
       ansible.builtin.set_fact:
         root_fs_usage: "{{ filesystem_usage.stdout | int }}"
 
     - name: delete files if root filesystem is more than 80% full
-      when: root_fs_usage > "80"
+      when: ansible_mounts['/']['size_available'] / ansible_mounts['/']['size_total'] < "20"
       block:
        - name: Categorize filesystem usage
          ansible.builtin.debug:
