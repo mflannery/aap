@@ -16,8 +16,7 @@
         root_fs_usage: "{{ filesystem_usage.stdout | int }}"
 
     - name: delete files if root filesystem is more than 80% full
-      when: "{{ filesystem_usage.stdout | int }}" > 80
-#      when: root_fs_usage > "80"
+      when: root_fs_usage > 80
       block:
        - name: Categorize filesystem usage
          ansible.builtin.debug:
