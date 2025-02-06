@@ -12,5 +12,5 @@
       condition: event.payload.usage >= "80"
       action:
         run_job_template:
-          name: deletefiles
+          name: Check and Delete Files
           organization: Default
