@@ -26,4 +26,4 @@
 
     - name: percent
       ansible.builtin.debug:
-        msg: "in decimal {{ root_path.size_available/root_path.size_total * 100 }}"
+        msg: "in decimal {{ (root_path.size_available/root_path.size_total*100) // 1 }}"
