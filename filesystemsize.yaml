@@ -3,7 +3,7 @@
   hosts: all
   become: true
   vars:
-    filesystem: "/"
+    path: "/"
 
   tasks:
     - name: set Filesystem usage fact
