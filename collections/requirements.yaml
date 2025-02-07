@@ -2,6 +2,7 @@
 collections:
   - name: redhat.rhel_system_roles
 #    version: ">=1.88.9"
+  - name: fedora.linux_system_roles
   - name: community.general
   - name: ansible.eda
 #  - name: cisco.ise
