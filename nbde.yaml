@@ -10,7 +10,7 @@
           - "{{ tang_server_var }}"
   roles:
     - redhat.rhel_system_roles.nbde_client
-  when: ansible_facts['distribution'] == "RedHat"
+  when: ansible_distribution == "RedHat"
 
 - name: Configure nbde client to unlock the disk for Fedora servers
   hosts: fedora
@@ -23,4 +23,4 @@
           - "{{ tang_server_var }}"
   roles:
     - fedora.linux_system_roles.nbde_client
-  when: ansible_facts['distribution'] == "Fedora"
+  when: ansible_distribution == "Fedora"
