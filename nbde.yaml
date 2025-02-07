@@ -1,7 +1,7 @@
 ---
 - name: Configure nbde client to unlock the disk for Fedora servers
   hosts: all
-  become: true
+  become: yes
   vars:
     nbde_client_bindings:
       - device: "{{ device_var }}"
