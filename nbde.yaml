@@ -1,5 +1,5 @@
 ---
-- name: Set up automatic unlock
+- name: Set up automatic unlock for RHEL
   hosts: all
   become: true
   vars:
@@ -7,6 +7,20 @@
       - device: "{{ device_var }}"
         encryption_password: "{{ encryption_pw_var }}"
         servers:
-          - "{{ tang_server_var | default('http://fedora.home.io') }}"
+          - "{{ tang_server_var }}"
   roles:
     - redhat.rhel_system_roles.nbde_client
+  when: ansible_facts['distribution'] == "RedHat"
+
+- name: Configure nbde client to unlock the disk for Fedora servers
+  hosts: fedora
+  become: true
+  vars:
+    nbde_client_bindings:
+      - device: "{{ device_var }}"
+        encryption_password: "{{ _encryption_password_ }}"
+        servers:
+          - "{{ tang_server_var }}"
+  roles:
+    - fedora.linux_system_roles.nbde_client
+  when: ansible_facts['distribution'] == "Fedora"
