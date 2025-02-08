@@ -9,7 +9,6 @@
         servers:
           - "{{ tang_server_var }}"
   tasks:
-  become: true
     - name: Verify become
       ansible.builtin.shell: whoami
   
