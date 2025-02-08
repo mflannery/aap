@@ -8,5 +8,10 @@
         encryption_password: "{{ _encryption_password_ }}"
         servers:
           - "{{ tang_server_var }}"
-  roles:
-    - fedora.linux_system_roles.nbde_client
+  tasks:
+    - name: Verify become
+      ansible.builtin.shell: whoami
+  
+    - name: include role
+      ansible.builtin.include_role:
+        name: fedora.linux_system_roles.nbde_client
