@@ -9,10 +9,10 @@
         servers:
           - "{{ tang_server_var }}"
   tasks:
+  become: true
     - name: Verify become
       ansible.builtin.shell: whoami
   
     - name: include role
-      become: true
       ansible.builtin.include_role:
         name: fedora.linux_system_roles.nbde_client
