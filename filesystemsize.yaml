@@ -10,7 +10,7 @@
       ansible.builtin.set_fact:
         root_path: "{{( ansible_facts.mounts | selectattr('mount', 'in', path))[-1] }}"
   
-    - name: delete files if root filesystem is more than 80% full
+    - name: delete files if root filesystem is less than 20% available
       when: (root_path.size_available/root_path.size_total*100) | int < 20
       block:
        - name: Analyzing the directories to delete...
