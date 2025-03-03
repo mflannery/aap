@@ -13,7 +13,7 @@
     - name: delete files if root filesystem is less than 20% available
       when: (root_path.size_available/root_path.size_total*100) | int < 20
       block:
-       - name: Analyzing the directories to delete...
+       - name: Analyzing the file to delete...
          ansible.builtin.find:
            paths: /tmp
            patterns: "*.file"
