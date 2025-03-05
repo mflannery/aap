@@ -1,0 +1,9 @@
+---
+- name: gather and write facts
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Write out facts
+      copy:
+        content: "{{ ansible_facts | to_nice_json }}"
+        dest: /tmp/fact.txt
