@@ -6,23 +6,8 @@
       ansible.builtin.debug:
         msg: "Thank you for the answer."
 
-# install postgresql & enable and start the postgresql service
-- name: Install postgresql
-  become: true
-  ansible.builtin.package:
-    name:
-      - postgresql-12
-      - postgresql-client-12
-      - python3-psycopg2
-      - libpq-dev
-    state: present
+# rename port eth0 to enp1s0
 
-- name: Enable and start the postgresql service
-  become: true
-  ansible.builtin.service:
-    name: postgresql
-    enabled: true
-    state: started
 
 
 
