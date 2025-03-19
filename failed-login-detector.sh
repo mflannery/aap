@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Command to execute when a failed login is detected
-ACTION="echo 'Failed login detected at $(date)' >> /var/log/failed_login_alerts.log"
+ACTION="logger -p user.warning 'Failed login detected at $(date)'"
 # Replace the above with your desired command, e.g., "systemctl restart some-service" or a custom script
 
 # Monitor SSH logs for failed password attempts
