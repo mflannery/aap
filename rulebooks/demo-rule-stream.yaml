@@ -14,3 +14,13 @@
         run_job_template:
           name: Check and Delete Files
           organization: Default
+    - name: Detected a failed login
+      condition: event.payload.login = "failed"
+      action:
+        run_job_template:
+          name: Check and Delete Files
+          organization: Default
+          job_args:
+            extra_vars:
+              failed_ip: "{{ event.payload.ipaddress }}"
+
