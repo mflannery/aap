@@ -15,10 +15,10 @@
           name: Check and Delete Files
           organization: Default
     - name: Detected a failed login
-      condition: event.payload.login = "failed"
+      condition: event.payload.login == "failed"
       action:
         run_job_template:
-          name: Check and Delete Files
+          name: Failed Login Attempt
           organization: Default
           job_args:
             extra_vars:
