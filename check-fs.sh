@@ -21,4 +21,5 @@ do
 #       curl -X POST -H "Authorization:Bearer redhat" -H "Content-Type: application/json" -d "$JSON_STRING" aap25.home.io:3001/endpoint
         curl -X POST -H "Authorization:Bearer VMbe5JIf9#!Z%t" -H "Content-Type: application/json" -d "$JSON_STRING" --insecure https://aap25.home.io:443/eda-event-streams/api/eda/v1/external_event_stream/c41d74d7-2ffb-4a43-af75-41ab251abb2c/post/
     fi
+    sleep 30
 done
