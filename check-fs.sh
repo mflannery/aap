@@ -6,7 +6,7 @@
 
 
 # Check if usage is greater than 80%, if so, log the usage and make an api call to EDA
-while ( 1=1 )
+while true;
 do
     # Get the filesystem usage percentage
     USAGE=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
