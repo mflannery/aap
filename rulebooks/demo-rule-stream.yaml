@@ -14,8 +14,9 @@
         run_job_template:
           name: Check and Delete Files
           organization: Default
+
     - name: Detected a failed login
-      condition: event.payload.login == "failed"
+      condition: event.payload.error == "ssh-failed"
       action:
         run_job_template:
           name: Failed Login Attempt
@@ -23,4 +24,24 @@
           job_args:
             extra_vars:
               failed_ip: "{{ event.payload.ipaddress }}"
+
+    - name: Detected a failed sudo
+      condition: event.payload.error == "sudo-failed"
+      action:
+        run_job_template:
+          name: Failed sudo Attempt
+          organization: Default
+          job_args:
+            extra_vars:
+              failed_ip: "{{ event.payload.log }}"
+
+    - name: Detected a changed file
+      condition: event.payload.error == "file-edited"
+      action:
+        run_job_template:
+          name: Config File Change
+          organization: Default
+          job_args:
+            extra_vars:
+              failed_ip: "{{ event.payload.log }}"
 
