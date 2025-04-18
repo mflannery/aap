@@ -1,0 +1,7 @@
+---
+- name: Failed sudo Attempt
+  hosts: all
+  tasks:
+    - name: print message
+      ansible.builtin.debug:
+        msg: "Failed sudo attempt: {{ log }}"
