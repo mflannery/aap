@@ -33,7 +33,7 @@
           organization: Default
           job_args:
             extra_vars:
-              failed_ip: "{{ event.payload.log }}"
+              log: "{{ event.payload.log }}"
 
     - name: Detected a changed file
       condition: event.payload.error == "file-edited"
@@ -43,5 +43,5 @@
           organization: Default
           job_args:
             extra_vars:
-              failed_ip: "{{ event.payload.log }}"
+              log: "{{ event.payload.log }}"
 
