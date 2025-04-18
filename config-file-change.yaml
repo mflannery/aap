@@ -1,0 +1,7 @@
+---
+- name: Config File Changed
+  hosts: all
+  tasks:
+    - name: print message
+      ansible.builtin.debug:
+        msg: "Config File Changed: {{ log }}"
