@@ -15,8 +15,9 @@
     - name: Start HTTPD service if the status is down
       condition: event.url_check.status == "down"
       action:
-        run_playbook:
-          name: start-httpd.yaml
+        run_job_template:
+          name: start-httpd
+          organization: Default
 
     - name: Delete files from /tmp if >= 80% utilized
       condition: event.payload.usage >= "80"
