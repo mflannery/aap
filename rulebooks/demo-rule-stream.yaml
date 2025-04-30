@@ -7,7 +7,17 @@
         host: 0.0.0.0
         port: 3002
 
+    - ansible.eda.url_check:
+        urls:
+          - http://vm2.home.io
+        delay: 30
   rules:
+    - name: Start HTTPD service if the status is down
+      condition: event.url_check.status == "down"
+      action:
+        run_playbook:
+          name: start-httpd.yaml
+
     - name: Delete files from /tmp if >= 80% utilized
       condition: event.payload.usage >= "80"
       action:
