@@ -10,7 +10,7 @@
     - ansible.eda.url_check:
         urls:
           - http://vm2.home.io
-        delay: 30
+        delay: 43200
   rules:
     - name: Start HTTPD service if the status is down
       condition: event.url_check.status == "down"
