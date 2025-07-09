@@ -11,7 +11,7 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - $HOME/Documents/Hashicorp/Vault/podman:/vault
+      - $HOME/aap/Hashicorp/Vault/podman:/vault
     healthcheck:
       retries: 5
     entrypoint: vault server -config /vault/config.hcl
