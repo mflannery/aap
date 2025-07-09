@@ -1,0 +1,17 @@
+version: '3.6'
+services:
+  vault:
+    image: docker.io/hashicorp/vault
+    container_name: vault
+    restart: on-failure:10
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_ADDR: 'https://0.0.0.0:8200'
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - $HOME/Documents/Hashicorp/Vault/podman:/vault
+    healthcheck:
+      retries: 5
+    entrypoint: vault server -config /vault/config.hcl
